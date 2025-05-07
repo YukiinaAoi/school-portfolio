@@ -3,37 +3,49 @@ const convertButton = document.getElementById("convert-button")
 function convert() {
     var convertType1 = document.getElementById("convert-select-1").value
     var convertType2 = document.getElementById("convert-select-2").value
+    const input = document.getElementById("input")
+    const result = document.getElementById("result")
     const msg = document.getElementById("result-msg")
 
-    if (convertType1 === "decimal") {
-        if (convertType2 === "binary") {
-            convertDecimalToBinary()
-        } else if (convertType2 === "octal") {
-            convertDecimalToOctal()
-        } else if (convertType2 === "hex") {
-            convertDecimalToHex()
-        } else {
-            const input = document.getElementById("input")
-            const result = document.getElementById("result")
+    if (input.value.trim() === "") {
+        msg.innerHTML = "Input must not be empty!"
+    } else if (String(input.value).match(" ")) {
+        msg.innerHTML = "Input must not have any spaces!"
+        result.value = ""
+    } else {
+        msg.innerHTML = ""
+        if (convertType1 === "decimal") {
+            if (convertType2 === "binary") {
+                convertDecimalToBinary()
+            } else if (convertType2 === "octal") {
+                convertDecimalToOctal()
+            } else if (convertType2 === "hex") {
+                convertDecimalToHex()
+            } else {
+                const input = document.getElementById("input")
+                const result = document.getElementById("result")
 
-            result.value = input.value
-        }
-    } else if (convertType1 === "binary") {
-        if (convertType2 === "decimal") {
-            convertBinaryToDecimal() 
-        } else if (convertType2 === "octal") {
-            convertBinaryToOctal()
-        } else {
-            const input = document.getElementById("input")
-            const result = document.getElementById("result")
+                result.value = input.value
+            }
+        } else if (convertType1 === "binary") {
+            // move hasOtherNumbers() function to here to avoid redundancy
+            if (convertType2 === "decimal") {
+                convertBinaryToDecimal() 
+            } else if (convertType2 === "octal") {
+                convertBinaryToOctal()
+            } else if (convertType2 === "hex") {
+                convertBinaryToHex()
+            } else {
+                const input = document.getElementById("input")
+                const result = document.getElementById("result")
 
-            result.value = input.value
-        }
+                result.value = input.value
+            }
+        }        
     }
-
 }
 
-function hasNumbers(decimal) {
+function hasOtherNumbers(decimal) { // for Binary - checks whether or not the value has only 0s and 1s
     return (/[2-9]/).test(String(decimal))
 }
 
@@ -151,7 +163,7 @@ function convertBinaryToDecimal() {
 
     if (input.value.trim() === "") {
         msg.innerHTML = "Input must not be empty!"
-    } else if (hasNumbers(input.value)) {
+    } else if (hasOtherNumbers(input.value)) {
         msg.innerHTML = "Binary input must have only 0s and 1s!"
     } else {
         msg.innerHTML = ""
@@ -193,7 +205,7 @@ function convertBinaryToOctal() {
 
     if (input.value.trim() === "") {
         msg.innerHTML = "Input must not be empty!"
-    } else if (hasNumbers(input.value)) {
+    } else if (hasOtherNumbers(input.value)) {
         msg.innerHTML = "Binary input must have only 0s and 1s!"
     } else {
         msg.innerHTML = ""
@@ -207,26 +219,26 @@ function convertBinaryToOctal() {
                 octalResult = ""
             }
             else {
-                var binaryValue = String(binaryValue) // 110010
+                var binaryValue = String(binaryValue)
                 var reversedBinaryValue = ""
                 
                 for (let i = 0; i < binaryValue.length; i++) {
-                    reversedBinaryValue = binaryValue.charAt(i) + reversedBinaryValue  // 010011
+                    reversedBinaryValue = binaryValue.charAt(i) + reversedBinaryValue
                 }
 
                 var octals = []
 
                 for (let i = 0; i < reversedBinaryValue.length; i += 3) {
-                    octals.push(reversedBinaryValue.slice(i, i+3)) //  010 011
+                    octals.push(reversedBinaryValue.slice(i, i+3))
                 }
 
                 for (let i = 0; i < octals.length; i++) {
                     let tempval = 0
-                    let octal = octals[i] // 011
+                    let octal = octals[i]
 
                     let reverseOctal = ""
                     for (let i = 0; i < octal.length; i++) {
-                        reverseOctal = octal.charAt(i) + reverseOctal // 110
+                        reverseOctal = octal.charAt(i) + reverseOctal
                     }
                     let add = 0
 
@@ -256,6 +268,103 @@ function convertBinaryToOctal() {
             }
         }
         result.value = octalResult
+    }
+}
+
+function convertBinaryToHex() {
+    const input = document.getElementById("input")
+    const result = document.getElementById("result")
+    const msg = document.getElementById("result-msg")
+
+    // binary to hex
+
+    if (input.value.trim() === "") {
+        msg.innerHTML = "Input must not be empty!"
+    } else if (hasOtherNumbers(input.value)) {
+        msg.innerHTML = "Binary input must have only 0s and 1s!"
+    } else {
+        msg.innerHTML = ""
+        var binaryInput = input.value
+        let hexResult = ""
+
+        if (parseInt(binaryInput) < 0) {
+            msg.innerHTML = "Input must not be less than 0!"
+        } else {
+            if (parseInt(binaryInput) === 0) {
+                hexResult = ""
+            }
+            else {
+                var binaryValue = String(binaryInput)
+                var reversedBinaryValue = ""
+                
+                for (let i = 0; i < binaryValue.length; i++) {
+                    reversedBinaryValue = binaryValue.charAt(i) + reversedBinaryValue
+                }
+
+                var hexes = []
+
+                for (let i = 0; i < reversedBinaryValue.length; i += 4) {
+                    hexes.push(reversedBinaryValue.slice(i, i+4))
+                }
+
+                for (let i = 0; i < hexes.length; i++) {
+                    let tempval = 0
+                    let hex = hexes[i] 
+
+                    let reverseHex = ""
+                    for (let i = 0; i < hex.length; i++) {
+                        reverseHex = hex.charAt(i) + reverseHex 
+                    }
+                    let add = 0
+
+                    if (reverseHex.length >= 2) {
+                        if (reverseHex.length == 2) {
+                            add = 2
+                        } else if (reverseHex.length == 3) {
+                            add = 4
+                        } else {
+                            add = 8
+                        }
+
+                        for (let i = 0; i < reverseHex.length; i++) {
+                            if (reverseHex.charAt(i) == 1) { 
+                                tempval += add
+                                add = add / 2
+                            } else {
+                                add = add / 2
+                            }
+                        }
+                        
+                        let hexDigit = ""
+                        if (tempval >= 10) {
+                            if (tempval == 10) {
+                                hexDigit = "A"
+                            } else if (tempval == 11) {
+                                hexDigit = "B"
+                            } else if (tempval == 12) {
+                                hexDigit = "C"
+                            } else if (tempval == 13) {
+                                hexDigit = "D"
+                            } else if (tempval == 14) {
+                                hexDigit = "E"
+                            } else if (tempval == 15) {
+                                hexDigit = "F"
+                            }
+                            hexResult = hexDigit + hexResult 
+                        } else {
+                            hexResult = tempval + hexResult
+                        }
+                                               
+                    } else {
+                        if (reverseHex.charAt(0) == 1) {
+                            tempval += 1
+                        }
+                        hexResult = tempval + hexResult    
+                    }
+                }
+            }
+        }
+        result.value = hexResult
     }
 }
 
