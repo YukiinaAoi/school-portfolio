@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Calculator App</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-bar">
+    <div class="sidebar-icon" onclick="toggleSidebar()">
+      <img src="media/sidebar-icon.png" alt="Sidebar Icon" />
+    </div>
+    <div class="top-bar-label">CalcBox</div>
+    <div class="logo">
+      <img src="media/logo.png" alt="Logo" />
+    </div>
+  </div>
+  <h1>Welcome to Calculator App</h1>
+  <div id="calculator-container">
+    <div class="tile">
+      <button onclick="showCalculator('number-conversions', this)">Number Conversions</button>
+      <div class="calculator-content"></div>
+    </div>
+    <div class="tile">
+      <button onclick="showCalculator('loancalculator', this)">Loan Calculator</button>
+      <div class="calculator-content"></div>
+    </div>
+  </div>
+  <script src="app.js"></script>
+</body>
+</html>

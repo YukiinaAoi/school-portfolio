@@ -1,0 +1,4 @@
+<!-- open in android studio -->
+npx cap sync android 
+npx cap copy
+npx cap open android
