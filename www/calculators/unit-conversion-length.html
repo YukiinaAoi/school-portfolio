@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Length Conversions</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="conversion-box">
+        <div class="select-boxes">
+            <div class="select-box">
+                <p>From</p>
+                <select class="select input" id="convert-select-1">
+                    <option value="meters">Meters</option>
+                    <option value="kilometers">Kilometers</option>
+                    <option value="centimeters">Centimeters</option>
+                    <option value="millimeters">Millimeters</option>
+                    <option value="inches">Inches</option>
+                    <option value="feet">Feet</option>
+                    <option value="yards">Yards</option>
+                    <option value="miles">Miles</option>
+                </select>
+            </div>
+            <div class="select-box">
+                <p>To</p>
+                <select class="select input" id="convert-select-2">
+                    <option value="meters">Meters</option>
+                    <option value="kilometers">Kilometers</option>
+                    <option value="centimeters">Centimeters</option>
+                    <option value="millimeters">Millimeters</option>
+                    <option value="inches">Inches</option>
+                    <option value="feet">Feet</option>
+                    <option value="yards">Yards</option>
+                    <option value="miles">Miles</option>
+                </select>
+            </div>  
+        </div>
+        <form class="conversion-result">
+            <input class="input" type="text" id="input" placeholder="Input" required autocomplete="off">
+            <input class="input" type="button" id="convert-button" value="Convert" onclick="convertLength()">
+            <input class="input" type="text" id="result" readonly placeholder="Result">
+            <p id="result-msg"></p>
+        </form>
+    </div>
+  <script src="unit-conversion-length.js"></script>
+</body>
+</html>

@@ -2,29 +2,80 @@
 <html>
 <head>
   <title>Calculator App</title>
-  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="default.css">
+  <link rel="stylesheet" href="calculators.css">
+  <link rel="stylesheet" href="settings.css">
+  <link rel="stylesheet" href="about.css">
 </head>
 <body>
   <div class="top-bar">
-    <div class="sidebar-icon" onclick="toggleSidebar()">
-      <img src="media/sidebar-icon.png" alt="Sidebar Icon" />
-    </div>
-    <div class="top-bar-label">CalcBox</div>
-    <div class="logo">
-      <img src="media/logo.png" alt="Logo" />
-    </div>
+    <img src="media/sidebar-icon.png" class="sidebar-icon invert" alt="Sidebar Icon" onclick="toggleSidebar()"/>
+    <input type="text" class="search-bar" id="search-bar" placeholder="What are you looking for?" oninput="filterTiles()"/>
+    <img src="media/search.png" class="search-icon invert" alt="Search" />
   </div>
-  <h1>Welcome to Calculator App</h1>
+  <div class="sidebar" id="sidebar">
+    <ul>
+      <li><a href="#" onclick="toggleSidebar()">Calculators <img class="icon2 invert" src="media/calculators.png"></a></li>
+      <li><a href="#" onclick="toggleAbout()">About <img class="icon2 invert" src="media/info.png"></a></li>
+      <li><a href="#" onclick="toggleSettings()">Settings <img class="icon2 invert" src="media/settings.png"></a></li>
+    </ul>
+  </div>
+  <div class="background-overlay" id="background-overlay" onclick="toggleSidebar()"></div>
   <div id="calculator-container">
-    <div class="tile">
+    <div class="tile" data-name="number-conversions">
       <button onclick="showCalculator('number-conversions', this)">Number Conversions</button>
       <div class="calculator-content"></div>
     </div>
-    <div class="tile">
+    <div class="tile" data-name="unit-conversion-length">
+      <button onclick="showCalculator('unit-conversion-length', this)">Length Unit Conversion</button>
+      <div class="calculator-content"></div>
+    </div>
+    <div class="tile" data-name="loan-calculator">
       <button onclick="showCalculator('loancalculator', this)">Loan Calculator</button>
       <div class="calculator-content"></div>
     </div>
+    <div class="tile" data-name="unit-conversion-weight">
+      <button onclick="showCalculator('unit-conversion-weight', this)">Weight Unit Conversion</button>
+      <div class="calculator-content"></div>
+    </div>
+    <div class="tile" data-name="unit-conversion-temperature">
+      <button onclick="showCalculator('unit-conversion-temperature', this)">Temperature Unit Conversion</button>
+      <div class="calculator-content"></div>
+    </div>
+    <div class="tile" data-name="currency-converter">
+      <button onclick="showCalculator('currency-converter', this)">Currency Converter</button>
+      <div class="calculator-content"></div>
+    </div>
+    <div class="tile" data-name="bmi-calculator">
+      <button onclick="showCalculator('bmi-calculator', this)">BMI Calculator</button>
+      <div class="calculator-content"></div>
+    </div>
+    <div class="tile" data-name="age-calculator">
+      <button onclick="showCalculator('age-calculator', this)">Age Calculator</button>
+      <div class="calculator-content"></div>
+    </div>
+    <div class="tile" data-name="percentage-calculator">
+      <button onclick="showCalculator('percentage-calculator', this)">Percentage Calculator</button>
+      <div class="calculator-content"></div>
+    </div>
+    <div class="tile" data-name="compound-interest-calculator">
+      <button onclick="showCalculator('compound-interest-calculator', this)">Compound Interest Calculator</button>
+      <div class="calculator-content"></div>
+    </div>
   </div>
+<!-- Settings -->
+  <div id="settings-page" class="settings-page">
+    <h2>Settings</h2>
+    <p>Customize your experience here.</p>
+  <button onclick="toggleSettings()">Close Settings</button>
+  </div>
+<!-- About -->
+  <div id="about-page" class="about-page">
+    <h2>About CalcBox</h2>
+    <p>Customize your experience here.</p>
+  <button onclick="toggleAbout()">Close About</button>
+  </div>
+
   <script src="app.js"></script>
 </body>
 </html>

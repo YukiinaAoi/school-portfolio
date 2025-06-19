@@ -1,23 +1,20 @@
 function showCalculator(name, buttonElement) {
-  const tile = buttonElement.parentElement; // Get the parent tile element
-  const isExpanded = tile.classList.contains('expanded'); // Check if already expanded
+  const tile = buttonElement.parentElement;
+  const isExpanded = tile.classList.contains('expanded');
 
   if (isExpanded) {
-    // Add collapsing class for animation
     tile.classList.remove('expanded');
     tile.classList.add('collapsing');
 
-    // Wait for the animation to complete before clearing content
     setTimeout(() => {
       tile.classList.remove('collapsing');
       const calculatorContent = tile.querySelector('.calculator-content');
-      calculatorContent.innerHTML = ''; // Clear calculator content
-      calculatorContent.style.display = 'none'; // Hide the content after clearing
-    }, 300); // Match the CSS transition duration (0.3s)
+      calculatorContent.innerHTML = ''; 
+      calculatorContent.style.display = 'none'; 
+    }, 300); 
   } else {
-    // Expand the tile and load the calculator
     const calculatorContent = tile.querySelector('.calculator-content');
-    calculatorContent.style.display = 'block'; // Ensure content is visible
+    calculatorContent.style.display = 'block';
     tile.classList.add('expanded');
     fetch(`calculators/${name}.html`)
       .then(response => response.text())
@@ -30,4 +27,59 @@ function showCalculator(name, buttonElement) {
       })
       .catch(err => console.error('Error loading calculator:', err));
   }
+}
+
+function toggleSidebar() {
+  const sidebar = document.getElementById("sidebar");
+  const overlay = document.getElementById("background-overlay");
+
+  const isSidebarOpen = sidebar.style.left === "0px";
+
+  if (isSidebarOpen) {
+    sidebar.style.left = "-300px";
+    overlay.style.display = "none";
+  } else {
+    sidebar.style.left = "0px";
+    overlay.style.display = "block";
+  }
+}
+
+function toggleSettings() {
+    const settingsPage = document.getElementById("settings-page");
+    
+    const isVisible = settingsPage.style.right === "0px";
+
+    if (isVisible) {
+        settingsPage.style.right = "-150%";
+    } else {
+        settingsPage.style.right = "0px";
+    }
+}
+
+function toggleAbout() {
+    const aboutPage = document.getElementById("about-page");
+
+    const isVisible = aboutPage.style.right === "0px";
+
+    if (isVisible) {
+        aboutPage.style.right = "-150%";
+    } else {
+        aboutPage.style.right = "0px";
+    }
+}
+
+function filterTiles() {
+    const searchInput = document.getElementById("search-bar").value.toLowerCase();
+    const tiles = document.querySelectorAll(".tile");
+
+    tiles.forEach(tile => {
+        const tileName = tile.getAttribute("data-name").toLowerCase();
+        const buttonText = tile.querySelector("button").textContent.toLowerCase();
+
+        if (tileName.includes(searchInput) || buttonText.includes(searchInput)) {
+            tile.style.display = "flex";
+        } else {
+            tile.style.display = "none"; 
+        }
+    });
 }
