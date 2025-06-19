@@ -83,3 +83,9 @@ function filterTiles() {
         }
     });
 }
+
+function handleSettingsClick(sectionName) {
+    alert(`You clicked on ${sectionName}`);
+    // Add logic here to navigate or perform actions based on the section clicked
+}
+

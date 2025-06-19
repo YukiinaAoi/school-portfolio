@@ -13,11 +13,12 @@
     <input type="text" class="search-bar" id="search-bar" placeholder="What are you looking for?" oninput="filterTiles()"/>
     <img src="media/search.png" class="search-icon invert" alt="Search" />
   </div>
+  <!-- FIX SCRIPT BUGS -->
   <div class="sidebar" id="sidebar">
     <ul>
-      <li><a href="#" onclick="toggleSidebar()">Calculators <img class="icon2 invert" src="media/calculators.png"></a></li>
-      <li><a href="#" onclick="toggleAbout()">About <img class="icon2 invert" src="media/info.png"></a></li>
-      <li><a href="#" onclick="toggleSettings()">Settings <img class="icon2 invert" src="media/settings.png"></a></li>
+      <li><a href="#" onclick="toggleSidebar()"><img class="icon invert" src="media/calculators.png"> Calculators </a></li>
+      <li><a href="#" onclick="toggleAbout()"><img class="icon invert" src="media/info.png"> About </a></li>
+      <li><a href="#" onclick="toggleSettings()"><img class="icon invert" src="media/settings.png"> Settings </a></li>
     </ul>
   </div>
   <div class="background-overlay" id="background-overlay" onclick="toggleSidebar()"></div>
@@ -65,9 +66,26 @@
   </div>
 <!-- Settings -->
   <div id="settings-page" class="settings-page">
-    <h2>Settings</h2>
-    <p>Customize your experience here.</p>
-  <button onclick="toggleSettings()">Close Settings</button>
+    <div onclick="toggleSettings()" class="settings-header">
+      <span><img src="media/arrow.png" class="flip invert" alt="Return"/><h2>Settings</h2></span>
+    </div>
+    <p>Customization</p>
+    <div class="customization">
+      <div class="theme"><h1>Theme</h1></div>
+      <div class="tile-layout"><h1>Tile Layout</h1></div>
+      <div class="font-size"><h1>Font Size</h1></div>
+      <div class="manage-calculators"><h1>Manage Calculators</h1></div>
+    </div>
+    <p>Behavior</p>
+    <div class="behavior">
+      <div class="enable-notifications"><h1>Enable Notifications</h1></div>
+      <div class="disable-animations"><h1>Disable Animations</h1></div>
+      <div class="auto-save"><h1>Auto-Save Last Calculator Used</h1></div>
+    </div>
+    <p>Others</p>
+    <div class="others">
+      <div class="clear-cache"><h1>Clear Cache</h1></div>
+      <div class="measurement-system"><h1>Measurement System</h1></div>
   </div>
 <!-- About -->
   <div id="about-page" class="about-page">

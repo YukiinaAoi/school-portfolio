@@ -1,14 +1,6 @@
 .calculator-content {
     padding: 7px;
-}
-
-#calculator-container {
-    display: flex;
-    flex-direction: column;
-    width: 97%;
-    padding: 20px;
-    gap: 15px;
-    align-items: center;
+    display: none;
 }
 
 button {
