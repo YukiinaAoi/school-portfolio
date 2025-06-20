@@ -28,7 +28,7 @@
 }
 
 .settings-page h1 {
-    font-size: 1.3rem;
+    font-size: 1.2rem;
     justify-self: left;
     font-weight: 500;
     padding-left: 5%;
@@ -39,14 +39,27 @@
     height: 5%;
 }
 
+.customization div img, .behavior div img,
+.others div img {
+    width: 7%;
+    height: 7%;
+}
+
 .settings-page span {
     display: flex;
     align-items: center;
     gap: 10px
 }
 
+.flex-div {
+    display: flex;
+    align-items: center;
+    padding-left: 20px;
+}
+
 .settings-header {
     cursor: pointer;
+    height: 7%;
 }
 
 .flip {
