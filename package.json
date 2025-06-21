@@ -16,10 +16,11 @@
     "url": "https://github.com/pr0cht/every-calculator/issues"
   },
   "homepage": "https://github.com/pr0cht/every-calculator#readme",
-  "description": "",
+  "description": "Recreaion of every kind of calculator online using **JavaScript**",
   "dependencies": {
     "@capacitor/android": "^7.2.0",
     "@capacitor/cli": "^7.2.0",
-    "@capacitor/core": "^7.2.0"
+    "@capacitor/core": "^7.2.0",
+    "express": "^5.1.0"
   }
 }

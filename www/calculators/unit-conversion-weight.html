@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Weight Conversions</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="conversion-box">
+        <div class="select-boxes">
+            <div class="select-box">
+                <p>From</p>
+                <select class="select input" id="convert-select-1">
+                    <option value="kilograms">Kilograms</option>
+                    <option value="grams">Grams</option>
+                    <option value="milligrams">Milligrams</option>
+                    <option value="pounds">Pounds</option>
+                    <option value="ounces">Ounces</option>
+                    <option value="stones">Stones</option>
+                    <option value="tons">Tons</option>
+                </select>
+            </div>
+            <div class="select-box">
+                <p>To</p>
+                <select class="select input" id="convert-select-2">
+                    <option value="kilograms">Kilograms</option>
+                    <option value="grams">Grams</option>
+                    <option value="milligrams">Milligrams</option>
+                    <option value="pounds">Pounds</option>
+                    <option value="ounces">Ounces</option>
+                    <option value="stones">Stones</option>
+                    <option value="tons">Tons</option>
+                </select>
+            </div>  
+        </div>
+        <form class="conversion-result">
+            <input class="input" type="text" id="input" placeholder="Input" required autocomplete="off">
+            <input class="input" type="button" id="convert-button" value="Convert" onclick="convertWeight()">
+            <input class="input" type="text" id="result" readonly placeholder="Result">
+            <p id="result-msg"></p>
+        </form>
+    </div>
+  <script src="unit-conversion-weight.js"></script>
+</body>
+</html>

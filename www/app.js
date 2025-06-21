@@ -1,5 +1,6 @@
 function showCalculator(name, buttonElement) {
   const tile = buttonElement.parentElement;
+  const calculatorContent = tile.querySelector('.calculator-content');
   const isExpanded = tile.classList.contains('expanded');
 
   if (isExpanded) {
@@ -8,18 +9,19 @@ function showCalculator(name, buttonElement) {
 
     setTimeout(() => {
       tile.classList.remove('collapsing');
-      const calculatorContent = tile.querySelector('.calculator-content');
-      calculatorContent.innerHTML = ''; 
-      calculatorContent.style.display = 'none'; 
-    }, 300); 
+      calculatorContent.innerHTML = '';
+    }, 500); 
   } else {
-    const calculatorContent = tile.querySelector('.calculator-content');
-    calculatorContent.style.display = 'block';
     tile.classList.add('expanded');
+
     fetch(`calculators/${name}.html`)
       .then(response => response.text())
       .then(data => {
         calculatorContent.innerHTML = data;
+
+        requestAnimationFrame(() => {
+          calculatorContent.classList.add('visible');
+        });
 
         const script = document.createElement('script');
         script.src = `calculators/${name}.js`;
