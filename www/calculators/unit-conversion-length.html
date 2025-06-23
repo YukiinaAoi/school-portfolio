@@ -10,7 +10,7 @@
         <div class="select-boxes">
             <div class="select-box">
                 <p>From</p>
-                <select class="select input" id="convert-select-1">
+                <select class="select input" id="length-convert-select-1">
                     <option value="meters">Meters</option>
                     <option value="kilometers">Kilometers</option>
                     <option value="centimeters">Centimeters</option>
@@ -23,7 +23,7 @@
             </div>
             <div class="select-box">
                 <p>To</p>
-                <select class="select input" id="convert-select-2">
+                <select class="select input" id="length-convert-select-2">
                     <option value="meters">Meters</option>
                     <option value="kilometers">Kilometers</option>
                     <option value="centimeters">Centimeters</option>
@@ -33,13 +33,13 @@
                     <option value="yards">Yards</option>
                     <option value="miles">Miles</option>
                 </select>
-            </div>  
+            </div>
         </div>
         <form class="conversion-result">
-            <input class="input" type="text" id="input" placeholder="Input" required autocomplete="off">
-            <input class="input" type="button" id="convert-button" value="Convert" onclick="convertLength()">
-            <input class="input" type="text" id="result" readonly placeholder="Result">
-            <p id="result-msg"></p>
+            <input class="input selectable" type="text" id="length-input" placeholder="Input" required autocomplete="off">
+            <input class="input convert-button" type="button" id="length-convert-button" value="Convert" onclick="lengthConversion()">
+            <input class="input selectable" type="text" id="length-result" readonly placeholder="Result">
+            <p class="result-message" id="length-result-msg"></p>
         </form>
     </div>
   <script src="unit-conversion-length.js"></script>

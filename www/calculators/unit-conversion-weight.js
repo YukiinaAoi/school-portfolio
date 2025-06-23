@@ -1,9 +1,9 @@
-function convertWeight() {
-    const input = parseFloat(document.getElementById("input").value);
-    const fromUnit = document.getElementById("convert-select-1").value;
-    const toUnit = document.getElementById("convert-select-2").value;
-    const resultElement = document.getElementById("result");
-    const resultMsgElement = document.getElementById("result-msg");
+function weightConversion() {
+    const input = parseFloat(document.getElementById("weight-input").value);
+    const fromUnit = document.getElementById("weight-convert-select-1").value;
+    const toUnit = document.getElementById("weight-convert-select-2").value;
+    const resultElement = document.getElementById("weight-result");
+    const resultMsgElement = document.getElementById("weight-result-msg");
 
     // Validate input
     if (isNaN(input)) {

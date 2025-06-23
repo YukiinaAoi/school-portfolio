@@ -5,12 +5,7 @@ function showCalculator(name, buttonElement) {
 
   if (isExpanded) {
     tile.classList.remove('expanded');
-    tile.classList.add('collapsing');
-
-    setTimeout(() => {
-      tile.classList.remove('collapsing');
-      calculatorContent.innerHTML = '';
-    }, 500); 
+    calculatorContent.innerHTML = '';
   } else {
     tile.classList.add('expanded');
 

@@ -80,7 +80,7 @@ button {
     width: 85%; 
 }
 
-#convert-button {
+.convert-button {
     align-self: center;
     justify-self: center;
     width: 150px;
@@ -97,7 +97,7 @@ button {
     background-color: #7fd47f;
 }
 
-#result-msg {
+.result-msg {
     padding: 0;
     margin: 0;
     color: rgb(224, 88, 88);

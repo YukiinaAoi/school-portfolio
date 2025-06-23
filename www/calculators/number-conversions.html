@@ -9,7 +9,7 @@
     <div class="conversion-box">
         <div class="select-boxes">
             <div class="select-box">
-                <p>From</p><select class="select input" id="convert-select-1">
+                <p>From</p><select class="select input" id="number-conversions-convert-select-1">
                     <option value="decimal">Decimal</option>
                     <option value="binary">Binary</option>
                     <option value="octal">Octal</option>
@@ -17,7 +17,7 @@
                 </select>
             </div>
             <div class="select-box">
-                <p>To</p><select class="select input" id="convert-select-2">
+                <p>To</p><select class="select input" id="number-conversions-convert-select-2">
                     <option value="decimal">Decimal</option>
                     <option value="binary">Binary</option>
                     <option value="octal">Octal</option>
@@ -26,10 +26,10 @@
             </div>  
         </div>
         <form class="conversion-result">
-            <input class="input" type="text" id="input" placeholder="Input" required autocomplete="off">
-            <input class="input" type="button" id="convert-button" value="Convert" onclick="convert()">
-            <input class="input" type="text" id="result" readonly placeholder="Result">
-            <p id="result-msg"></p>
+            <input class="input selectable" type="text" id="number-conversions-input" placeholder="Input" required autocomplete="off">
+            <input class="input convert-button" type="button" id="number-conversions-convert-button" value="Convert" onclick="numberConversion()">
+            <input class="input selectable" type="text" id="number-conversions-result" readonly placeholder="Result">
+            <p class="result-message" id="number-conversions-result-msg"></p>
         </form>
     </div>
   <script src="number-conversions.js"></script>

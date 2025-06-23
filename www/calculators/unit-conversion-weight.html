@@ -10,7 +10,7 @@
         <div class="select-boxes">
             <div class="select-box">
                 <p>From</p>
-                <select class="select input" id="convert-select-1">
+                <select class="select input" id="weight-convert-select-1">
                     <option value="kilograms">Kilograms</option>
                     <option value="grams">Grams</option>
                     <option value="milligrams">Milligrams</option>
@@ -22,7 +22,7 @@
             </div>
             <div class="select-box">
                 <p>To</p>
-                <select class="select input" id="convert-select-2">
+                <select class="select input" id="weight-convert-select-2">
                     <option value="kilograms">Kilograms</option>
                     <option value="grams">Grams</option>
                     <option value="milligrams">Milligrams</option>
@@ -34,10 +34,10 @@
             </div>  
         </div>
         <form class="conversion-result">
-            <input class="input" type="text" id="input" placeholder="Input" required autocomplete="off">
-            <input class="input" type="button" id="convert-button" value="Convert" onclick="convertWeight()">
-            <input class="input" type="text" id="result" readonly placeholder="Result">
-            <p id="result-msg"></p>
+            <input class="input selectable" type="text" id="weight-input" placeholder="Input" required autocomplete="off">
+            <input class="input convert-button" type="button" id="weight-convert-button" value="Convert" onclick="weightConversion()">
+            <input class="input selectable" type="text" id="weight-result" readonly placeholder="Result">
+            <p class="result-message" id="weight-result-msg"></p>
         </form>
     </div>
   <script src="unit-conversion-weight.js"></script>

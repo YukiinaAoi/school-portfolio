@@ -1,9 +1,9 @@
-function convertLength() {
-    const input = parseFloat(document.getElementById("input").value);
-    const fromUnit = document.getElementById("convert-select-1").value;
-    const toUnit = document.getElementById("convert-select-2").value;
-    const resultElement = document.getElementById("result");
-    const resultMsgElement = document.getElementById("result-msg");
+function lengthConversion() {
+    const input = parseFloat(document.getElementById("length-input").value);
+    const fromUnit = document.getElementById("length-convert-select-1").value;
+    const toUnit = document.getElementById("length-convert-select-2").value;
+    const resultElement = document.getElementById("length-result");
+    const resultMsgElement = document.getElementById("length-result-msg");
 
     // Validate input
     if (isNaN(input)) {

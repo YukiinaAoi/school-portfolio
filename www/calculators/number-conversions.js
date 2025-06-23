@@ -1,11 +1,11 @@
-const convertButton = document.getElementById("convert-button");
+const convertButton = document.getElementById("number-conversions-convert-button");
 
-function convert() {
-    var convertType1 = document.getElementById("convert-select-1").value;
-    var convertType2 = document.getElementById("convert-select-2").value;
-    const input = document.getElementById("input");
-    const result = document.getElementById("result");
-    const msg = document.getElementById("result-msg");
+function numberConversion() {
+    var convertType1 = document.getElementById("number-conversions-convert-select-1").value;
+    var convertType2 = document.getElementById("number-conversions-convert-select-2").value;
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     if (input.value.trim() === "") {
         msg.innerHTML = "Input must not be empty!";
@@ -63,9 +63,9 @@ function hasOtherNumbers(decimal) {
 }
 
 function convertDecimalToBinary() {
-    const input = document.getElementById("input")
-    const result = document.getElementById("result")
-    const msg = document.getElementById("result-msg")
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     // decimal to binary
 
@@ -92,9 +92,9 @@ function convertDecimalToBinary() {
 }
 
 function convertDecimalToOctal() {
-    const input = document.getElementById("input")
-    const result = document.getElementById("result")
-    const msg = document.getElementById("result-msg")
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     // decimal to octal
 
@@ -121,9 +121,9 @@ function convertDecimalToOctal() {
 }
 
 function convertDecimalToHex() {
-    const input = document.getElementById("input")
-    const result = document.getElementById("result")
-    const msg = document.getElementById("result-msg")
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     // decimal to hex
 
@@ -168,9 +168,9 @@ function convertDecimalToHex() {
 }
 
 function convertBinaryToDecimal() {
-    const input = document.getElementById("input")
-    const result = document.getElementById("result")
-    const msg = document.getElementById("result-msg")
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     // binary to decimal
 
@@ -210,9 +210,9 @@ function convertBinaryToDecimal() {
 }
 
 function convertBinaryToOctal() {
-    const input = document.getElementById("input")
-    const result = document.getElementById("result")
-    const msg = document.getElementById("result-msg")
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     // binary to octal
 
@@ -285,9 +285,9 @@ function convertBinaryToOctal() {
 }
 
 function convertBinaryToHex() {
-    const input = document.getElementById("input")
-    const result = document.getElementById("result")
-    const msg = document.getElementById("result-msg")
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     // binary to hex
 
@@ -297,94 +297,16 @@ function convertBinaryToHex() {
         msg.innerHTML = "Binary input must have only 0s and 1s!"
     } else {
         msg.innerHTML = ""
-        var binaryInput = input.value
-        let hexResult = ""
-
-        if (parseInt(binaryInput) < 0) {
-            msg.innerHTML = "Input must not be less than 0!"
-        } else {
-            if (parseInt(binaryInput) === 0) {
-                hexResult = ""
-            }
-            else {
-                var binaryValue = String(binaryInput)
-                var reversedBinaryValue = ""
-                
-                for (let i = 0; i < binaryValue.length; i++) {
-                    reversedBinaryValue = binaryValue.charAt(i) + reversedBinaryValue
-                }
-
-                var hexes = []
-
-                for (let i = 0; i < reversedBinaryValue.length; i += 4) {
-                    hexes.push(reversedBinaryValue.slice(i, i+4))
-                }
-
-                for (let i = 0; i < hexes.length; i++) {
-                    let tempval = 0
-                    let hex = hexes[i] 
-
-                    let reverseHex = ""
-                    for (let i = 0; i < hex.length; i++) {
-                        reverseHex = hex.charAt(i) + reverseHex 
-                    }
-                    let add = 0
-
-                    if (reverseHex.length >= 2) {
-                        if (reverseHex.length == 2) {
-                            add = 2
-                        } else if (reverseHex.length == 3) {
-                            add = 4
-                        } else {
-                            add = 8
-                        }
-
-                        for (let i = 0; i < reverseHex.length; i++) {
-                            if (reverseHex.charAt(i) == 1) { 
-                                tempval += add
-                                add = add / 2
-                            } else {
-                                add = add / 2
-                            }
-                        }
-                        
-                        let hexDigit = ""
-                        if (tempval >= 10) {
-                            if (tempval == 10) {
-                                hexDigit = "A"
-                            } else if (tempval == 11) {
-                                hexDigit = "B"
-                            } else if (tempval == 12) {
-                                hexDigit = "C"
-                            } else if (tempval == 13) {
-                                hexDigit = "D"
-                            } else if (tempval == 14) {
-                                hexDigit = "E"
-                            } else if (tempval == 15) {
-                                hexDigit = "F"
-                            }
-                            hexResult = hexDigit + hexResult 
-                        } else {
-                            hexResult = tempval + hexResult
-                        }
-                                               
-                    } else {
-                        if (reverseHex.charAt(0) == 1) {
-                            tempval += 1
-                        }
-                        hexResult = tempval + hexResult    
-                    }
-                }
-            }
-        }
-        result.value = hexResult
+        let decimalValue = parseInt(input.value, 2); // Convert Binary to Decimal
+        let hexResult = decimalValue.toString(16).toUpperCase(); // Convert Decimal to Hex, uppercase
+        result.value = hexResult;
     }
 }
 
 function convertOctalToDecimal() {
-    const input = document.getElementById("input");
-    const result = document.getElementById("result");
-    const msg = document.getElementById("result-msg");
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     if (input.value.trim() === "") {
         msg.innerHTML = "Input must not be empty!";
@@ -396,9 +318,9 @@ function convertOctalToDecimal() {
 }
 
 function convertOctalToBinary() {
-    const input = document.getElementById("input");
-    const result = document.getElementById("result");
-    const msg = document.getElementById("result-msg");
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     if (input.value.trim() === "") {
         msg.innerHTML = "Input must not be empty!";
@@ -411,24 +333,24 @@ function convertOctalToBinary() {
 }
 
 function convertOctalToHex() {
-    const input = document.getElementById("input");
-    const result = document.getElementById("result");
-    const msg = document.getElementById("result-msg");
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     if (input.value.trim() === "") {
         msg.innerHTML = "Input must not be empty!";
     } else {
         msg.innerHTML = "";
         let decimalValue = parseInt(input.value, 8); // Convert Octal to Decimal
-        let hexResult = decimalValue.toString(16).toUpperCase(); // Convert Decimal to Hex
+        let hexResult = decimalValue.toString(16).toUpperCase(); // Convert Decimal to Hex, uppercase
         result.value = hexResult;
     }
 }
 
 function convertHexToDecimal() {
-    const input = document.getElementById("input");
-    const result = document.getElementById("result");
-    const msg = document.getElementById("result-msg");
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     if (input.value.trim() === "") {
         msg.innerHTML = "Input must not be empty!";
@@ -440,33 +362,33 @@ function convertHexToDecimal() {
 }
 
 function convertHexToBinary() {
-    const input = document.getElementById("input");
-    const result = document.getElementById("result");
-    const msg = document.getElementById("result-msg");
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     if (input.value.trim() === "") {
         msg.innerHTML = "Input must not be empty!";
     } else {
         msg.innerHTML = "";
         let decimalValue = parseInt(input.value, 16); // Convert Hex to Decimal
-        let binaryResult = decimalValue.toString(2); // Convert Decimal to Binary
+        let binaryResult = decimalValue.toString(2).toUpperCase(); // Convert Decimal to Binary (no letters, but keep consistent)
         result.value = binaryResult;
     }
 }
 
 function convertHexToOctal() {
-    const input = document.getElementById("input");
-    const result = document.getElementById("result");
-    const msg = document.getElementById("result-msg");
+    const input = document.getElementById("number-conversions-input");
+    const result = document.getElementById("number-conversions-result");
+    const msg = document.getElementById("number-conversions-result-msg");
 
     if (input.value.trim() === "") {
         msg.innerHTML = "Input must not be empty!";
     } else {
         msg.innerHTML = "";
         let decimalValue = parseInt(input.value, 16); // Convert Hex to Decimal
-        let octalResult = decimalValue.toString(8); // Convert Decimal to Octal
+        let octalResult = decimalValue.toString(8).toUpperCase(); // Convert Decimal to Octal (no letters, but keep consistent)
         result.value = octalResult;
     }
 }
 
-convertButton.addEventListener("click", convert);
+convertButton.addEventListener("click", numberConversion);
