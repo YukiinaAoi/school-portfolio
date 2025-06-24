@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Power Conversions</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="conversion-box">
+        <div class="select-boxes">
+            <div class="select-box">
+                <p>From</p>
+                <select class="select input" id="power-convert-select-1">
+                    <option value="watt">Watt (W)</option>
+                    <option value="kilowatt">Kilowatt (kW)</option>
+                    <option value="megawatt">Megawatt (MW)</option>
+                    <option value="horsepower">Horsepower (hp)</option>
+                    <option value="btu-per-hour">BTU/hr</option>
+                    <option value="calorie-per-second">Calorie/sec</option>
+                </select>
+            </div>
+            <div class="select-box">
+                <p>To</p>
+                <select class="select input" id="power-convert-select-2">
+                    <option value="watt">Watt (W)</option>
+                    <option value="kilowatt">Kilowatt (kW)</option>
+                    <option value="megawatt">Megawatt (MW)</option>
+                    <option value="horsepower">Horsepower (hp)</option>
+                    <option value="btu-per-hour">BTU/hr</option>
+                    <option value="calorie-per-second">Calorie/sec</option>
+                </select>
+            </div>  
+        </div>
+        <form class="conversion-result">
+            <input class="input text-input selectable" type="text" id="power-input" placeholder="Input" required autocomplete="off">
+            <input class="input convert-button" type="button" id="power-convert-button" value="Convert" onclick="powerConversion()">
+            <input class="input text-input selectable" type="text" id="power-result" readonly placeholder="Result">
+            <p class="result-message" id="power-result-msg"></p>
+        </form>
+    </div>
+  <script src="unit-conversion-power.js"></script>
+</body>
+</html>

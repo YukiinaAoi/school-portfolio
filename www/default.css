@@ -269,3 +269,8 @@ input:checked + .slider:before {
     animation: none !important;
     scroll-behavior: auto !important;
 }
+
+/* Font-Size */
+.font-small { font-size: 14px; }
+.font-medium { font-size: 17px; }
+.font-large { font-size: 20px; }

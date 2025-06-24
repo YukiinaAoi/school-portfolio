@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Time Conversions</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="conversion-box">
+        <div class="select-boxes">
+            <div class="select-box">
+                <p>From</p>
+                <select class="select input" id="time-convert-select-1">
+                    <option value="seconds">Seconds</option>
+                    <option value="minutes">Minutes</option>
+                    <option value="hours">Hours</option>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                    <option value="years">Years</option>
+                </select>
+            </div>
+            <div class="select-box">
+                <p>To</p>
+                <select class="select input" id="time-convert-select-2">
+                    <option value="seconds">Seconds</option>
+                    <option value="minutes">Minutes</option>
+                    <option value="hours">Hours</option>
+                    <option value="days">Days</option>
+                    <option value="weeks">Weeks</option>
+                    <option value="months">Months</option>
+                    <option value="years">Years</option>
+                </select>
+            </div>  
+        </div>
+        <form class="conversion-result">
+            <input class="input text-input selectable" type="text" id="time-input" placeholder="Input" required autocomplete="off">
+            <input class="input convert-button" type="button" id="time-convert-button" value="Convert" onclick="timeConversion()">
+            <input class="input text-input selectable" type="text" id="time-result" readonly placeholder="Result">
+            <p class="result-message" id="time-result-msg"></p>
+        </form>
+    </div>
+  <script src="unit-conversion-time.js"></script>
+</body>
+</html>

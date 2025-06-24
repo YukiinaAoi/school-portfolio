@@ -81,3 +81,25 @@
     margin-right: 5%;
 }
 
+/* Pop up - Font Size */
+.popup-menu {
+  position: fixed;
+  left: 50%;
+  top: 40%;
+  transform: translate(-50%, -50%);
+  background: #00224d;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.2);
+  z-index: 2000;
+  padding: 10px 0;
+  min-width: 160px;
+}
+.popup-option {
+  color: #fff;
+  padding: 12px 24px;
+  cursor: pointer;
+  text-align: center;
+}
+.popup-option:hover {
+  background: #003366;
+}

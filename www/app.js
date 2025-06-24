@@ -11,7 +11,7 @@ const calculators = [
     { id: "bmi-calculator", label: "BMI Calculator" },
 ];
 
-function showCalculator(name, buttonElement) {
+async function showCalculator(name, buttonElement) {
   const tile = buttonElement.parentElement;
   const calculatorContent = tile.querySelector('.calculator-content');
   const isExpanded = tile.classList.contains('expanded');
@@ -36,6 +36,19 @@ function showCalculator(name, buttonElement) {
         document.body.appendChild(script);
       })
       .catch(err => console.error('Error loading calculator:', err));
+
+      const { value } = await Capacitor.Plugins.Preferences.get({ key: 'userSettings' });
+      let autoSave = false;
+      if (value) {
+          const settings = JSON.parse(value);
+          autoSave = settings.autoSaveLastCalculator;
+      }
+      if (autoSave) {
+          await Capacitor.Plugins.Preferences.set({
+              key: 'lastCalculatorUsed',
+              value: name
+          });
+      }
   }
 }
 
@@ -93,16 +106,27 @@ function setEnabledCalculators(list) {
 // Render Manage Calculators List
 function renderManageCalculators() {
     const enabledCalculators = getEnabledCalculators();
+    const favoriteCalculators = getFavoriteCalculators();
     const list = document.querySelector('.calculator-list');
     if (!list) return;
     list.innerHTML = '<p>Available Calculators</p>';
 
-    calculators.forEach(calc => {
+    // Sort: favorites first
+    const sorted = [...calculators].sort((a, b) => {
+        const aFav = favoriteCalculators.includes(a.id) ? 1 : 0;
+        const bFav = favoriteCalculators.includes(b.id) ? 1 : 0;
+        return bFav - aFav;
+    });
+
+    sorted.forEach(calc => {
         const item = document.createElement('div');
         item.className = 'calculator-item';
 
+        const isFavorite = favoriteCalculators.includes(calc.id);
+        const starSrc = isFavorite ? 'media/favorited.png' : 'media/favorite.png';
+
         item.innerHTML = `
-            <img src="media/favorite.png" class="favorite-icon invert" alt="Favorite">
+            <img src="${starSrc}" class="favorite-icon invert" alt="Favorite" onclick="toggleFavoriteCalculator(event, '${calc.id}')">
             <span class="calculator-name">${calc.label}</span>
             <label class="disable-label">
                 <input type="checkbox" class="disable-checkbox" onchange="toggleCalculatorEnabled('${calc.id}', this.checked)" ${enabledCalculators.includes(calc.id) ? '' : 'checked'}>
@@ -133,7 +157,16 @@ function renderCalculators() {
     container.innerHTML = "";
 
     const enabledCalculators = getEnabledCalculators();
-    calculators.forEach(calc => {
+    const favoriteCalculators = getFavoriteCalculators();
+
+    // Sort: favorites first
+    const sorted = [...calculators].sort((a, b) => {
+        const aFav = favoriteCalculators.includes(a.id) ? 1 : 0;
+        const bFav = favoriteCalculators.includes(b.id) ? 1 : 0;
+        return bFav - aFav;
+    });
+
+    sorted.forEach(calc => {
         if (enabledCalculators.includes(calc.id)) {
             const tile = document.createElement('div');
             tile.className = "tile";
@@ -172,6 +205,29 @@ function searchTiles() {
             tile.style.display = 'none';
         }
     });
+}
+
+function getFavoriteCalculators() {
+    const stored = localStorage.getItem('favoriteCalculators');
+    if (stored) return JSON.parse(stored);
+    return [];
+}
+
+function setFavoriteCalculators(list) {
+    localStorage.setItem('favoriteCalculators', JSON.stringify(list));
+}
+
+function toggleFavoriteCalculator(event, calculatorId) {
+    event.stopPropagation();
+    let favorites = getFavoriteCalculators();
+    if (favorites.includes(calculatorId)) {
+        favorites = favorites.filter(id => id !== calculatorId);
+    } else {
+        favorites.push(calculatorId);
+    }
+    setFavoriteCalculators(favorites);
+    renderManageCalculators();
+    renderCalculators();
 }
 
 document.addEventListener('DOMContentLoaded', renderCalculators);

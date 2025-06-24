@@ -39,8 +39,12 @@
           <span class="slider round"></span>
         </label>
       </div>
-      <div class="tile-layout flex-div"><img src="media/tiles.png" class="icon2 invert"><h1>Tile Layout</h1><img src="media/arrow.png" class="arrow icon2 invert"></div>
-      <div class="font-size flex-div"><img src="media/font.png" class="icon2 invert"><h1>Font Size</h1><p class="font-label">Small</p><img src="media/arrow.png" class="arrow icon2 invert"></div>
+      <div class="font-size flex-div"><img src="media/font.png" class="icon2 invert"><h1>Font Size</h1><p class="font-label"></p><img src="media/arrow.png" class="arrow icon2 invert"></div>
+      <div id="font-size-popup" class="popup-menu" style="display:none;">
+        <div class="popup-option" data-size="small">Small</div>
+        <div class="popup-option" data-size="medium">Medium</div>
+        <div class="popup-option" data-size="large">Large</div>
+      </div>
       <div class="manage-calculators flex-div"  onclick="toggleManage()"><img src="media/calculators.png" class="icon2 invert"><h1>Manage Calculators</h1></div>
     </div>
     <p>Behavior</p>
@@ -57,12 +61,16 @@
           <span class="slider round"></span>
         </label>
       </div>
-      <div class="auto-save flex-div"><img src="media/recovery.png" class="icon2 invert"><h1>Auto-Save Last Calculator Used</h1></div>
+      <div class="auto-save flex-div" onclick="toggleAutoSave()"><img src="media/recovery.png" class="icon2 invert"><h1>Auto-Save Last Calculator Used</h1>
+      <label class="switch">
+          <input  id="auto-save-switch" type="checkbox">
+          <span class="slider round"></span>
+        </label>
+      </div>    
     </div>
     <p>Others</p>
     <div class="others">
-      <div class="clear-cache flex-div"><img src="media/clearcache.png" class="icon2 invert"><h1>Clear Cache</h1></div>
-      <div class="measurement-system flex-div"><img src="media/measurement.png" class="icon2 invert"><h1>Measurement System</h1><img src="media/arrow.png" class="arrow icon2 invert"></div>
+      <div class="reset-settings flex-div"><img src="media/clearcache.png" class="icon2 invert"><h1>Reset Settings</h1></div>
   </div>
 <!-- Manage Calculators -->
   <div>
@@ -73,15 +81,8 @@
       
       <div class="calculator-list">
         <p>Available Calculators</p>
-        <!-- Example calculator item with checkbox for disable -->
-        <div class="calculator-item">
-          <img src="media/favorite.png" class="favorite-icon invert" alt="Favorite">
-          <span class="calculator-name">Calculator</span>
-          <label class="disable-label">
-            <input type="checkbox" class="disable-checkbox" onchange="toggleCalculatorEnabled('Calculator', this.checked)">
-            <span>Disable</span>
-          </label>
-        </div>
+        <!-- All available calculators built in the app -->
+
       </div>
     </div>
   </div>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Volume Conversions</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="conversion-box">
+        <div class="select-boxes">
+            <div class="select-box">
+                <p>From</p>
+                <select class="select input" id="volume-convert-select-1">
+                    <option value="cubic-meters">Cubic Meters</option>
+                    <option value="liters">Liters</option>
+                    <option value="milliliters">Milliliters</option>
+                    <option value="cubic-centimeters">Cubic Centimeters</option>
+                    <option value="cubic-millimeters">Cubic Millimeters</option>
+                    <option value="cubic-inches">Cubic Inches</option>
+                    <option value="cubic-feet">Cubic Feet</option>
+                    <option value="cubic-yards">Cubic Yards</option>
+                    <option value="gallons">Gallons</option>
+                    <option value="quarts">Quarts</option>
+                    <option value="pints">Pints</option>
+                    <option value="cups">Cups</option>
+                    <option value="fluid-ounces">Fluid Ounces</option>
+                </select>
+            </div>
+            <div class="select-box">
+                <p>To</p>
+                <select class="select input" id="volume-convert-select-2">
+                    <option value="cubic-meters">Cubic Meters</option>
+                    <option value="liters">Liters</option>
+                    <option value="milliliters">Milliliters</option>
+                    <option value="cubic-centimeters">Cubic Centimeters</option>
+                    <option value="cubic-millimeters">Cubic Millimeters</option>
+                    <option value="cubic-inches">Cubic Inches</option>
+                    <option value="cubic-feet">Cubic Feet</option>
+                    <option value="cubic-yards">Cubic Yards</option>
+                    <option value="gallons">Gallons</option>
+                    <option value="quarts">Quarts</option>
+                    <option value="pints">Pints</option>
+                    <option value="cups">Cups</option>
+                    <option value="fluid-ounces">Fluid Ounces</option>
+                </select>
+            </div>  
+        </div>
+        <form class="conversion-result">
+            <input class="input text-input selectable" type="text" id="volume-input" placeholder="Input" required autocomplete="off">
+            <input class="input convert-button" type="button" id="volume-convert-button" value="Convert" onclick="volumeConversion()">
+            <input class="input text-input selectable" type="text" id="volume-result" readonly placeholder="Result">
+            <p class="result-message" id="volume-result-msg"></p>
+        </form>
+    </div>
+  <script src="unit-conversion-volume.js"></script>
+</body>
+</html>
