@@ -4,7 +4,6 @@ console.log(document.querySelector('.theme'));
 document.addEventListener('DOMContentLoaded', async () => {
     await loadSettings();
 
-    // When the div is clicked, trigger a click on the input
     document.querySelector('.theme').addEventListener('click', function(e) {
         if (e.target.tagName.toLowerCase() !== 'input') {
             document.getElementById('theme-switch').click();
@@ -56,5 +55,19 @@ async function loadSettings() {
         document.getElementById('animations-switch').checked = settings.animationsDisabled || false;
     
         document.body.classList.toggle('no-animations', settings.animationsDisabled || false);
+    }
+}
+
+async function sendNotificationIfEnabled(notificationOptions) {
+    const { value } = await Capacitor.Plugins.Preferences.get({ key: 'userSettings' });
+    let notificationsDisabled = false;
+    if (value) {
+        const settings = JSON.parse(value);
+        notificationsDisabled = settings.notificationsDisabled;
+    }
+    if (!notificationsDisabled) {
+        await Capacitor.Plugins.LocalNotifications.schedule({
+            notifications: [notificationOptions]
+        });
     }
 }

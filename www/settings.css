@@ -41,6 +41,10 @@
     padding: 1%;
 }
 
+.settings-header {
+    height: 7%;
+}
+
 .customization div img, .behavior div img,
 .others div img {
     width: 7%;
@@ -65,10 +69,6 @@
     margin-left: auto;
     justify-self: right;
     margin-left: 35%;
-}
-
-.settings-header {
-    height: 7%;
 }
 
 .flip {

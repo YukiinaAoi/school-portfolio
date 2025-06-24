@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BMI Calculator</title>
+  <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <div class="conversion-box">
+        <div class="select-boxes">
+            <div class="select-box">
+                <p>Height</p>
+                <input class="input text-input selectable" type="number" id="bmi-height" placeholder="Height in cm" min="0" required autocomplete="off">
+            </div>
+            <div class="select-box">
+                <p>Weight</p>
+                <input class="input text-input selectable" type="number" id="bmi-weight" placeholder="Weight in kg" min="0" required autocomplete="off">
+            </div>
+        </div>
+        <form class="conversion-result" onsubmit="event.preventDefault(); calculateBMI();">
+            <input class="input convert-button" type="button" id="bmi-calculate-button" value="Calculate BMI" onclick="calculateBMI()">
+            <input class="input text-input selectable" type="text" id="bmi-result" readonly placeholder="BMI Result">
+            <p class="result-message" id="bmi-result-msg"></p>
+        </form>
+    </div>
+  <script src="bmi-calculator.js"></script>
+</body>
+</html>

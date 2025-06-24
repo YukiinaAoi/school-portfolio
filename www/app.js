@@ -1,3 +1,16 @@
+const calculators = [
+    { id: "number-conversions", label: "Number Conversions" },
+    { id: "unit-conversion-length", label: "Length Unit Conversion" },
+    { id: "unit-conversion-weight", label: "Weight Unit Conversion" },
+    { id: "unit-conversion-temperature", label: "Temperature Unit Conversion" },
+    { id: "unit-conversion-volume", label: "Volume Unit Conversion" }, 
+    { id: "unit-conversion-area", label: "Area Unit Conversion" },
+    { id: "unit-conversion-speed", label: "Speed Unit Conversion" },
+    { id: "unit-conversion-time", label: "Time Unit Conversion" },
+    { id: "unit-conversion-power", label: "Power Unit Conversion" },
+    { id: "bmi-calculator", label: "BMI Calculator" },
+];
+
 function showCalculator(name, buttonElement) {
   const tile = buttonElement.parentElement;
   const calculatorContent = tile.querySelector('.calculator-content');
@@ -65,24 +78,100 @@ function toggleAbout() {
     }
 }
 
-function filterTiles() {
-    const searchInput = document.getElementById("search-bar").value.toLowerCase();
-    const tiles = document.querySelectorAll(".tile");
+// Store enabled/disabled state in localStorage for demo (replace with Preferences for production)
+function getEnabledCalculators() {
+    const stored = localStorage.getItem('enabledCalculators');
+    if (stored) return JSON.parse(stored);
+    // Default: all enabled
+    return calculators.map(c => c.id);
+}
 
-    tiles.forEach(tile => {
-        const tileName = tile.getAttribute("data-name").toLowerCase();
-        const buttonText = tile.querySelector("button").textContent.toLowerCase();
+function setEnabledCalculators(list) {
+    localStorage.setItem('enabledCalculators', JSON.stringify(list));
+}
 
-        if (tileName.includes(searchInput) || buttonText.includes(searchInput)) {
-            tile.style.display = "flex";
-        } else {
-            tile.style.display = "none"; 
+// Render Manage Calculators List
+function renderManageCalculators() {
+    const enabledCalculators = getEnabledCalculators();
+    const list = document.querySelector('.calculator-list');
+    if (!list) return;
+    list.innerHTML = '<p>Available Calculators</p>';
+
+    calculators.forEach(calc => {
+        const item = document.createElement('div');
+        item.className = 'calculator-item';
+
+        item.innerHTML = `
+            <img src="media/favorite.png" class="favorite-icon invert" alt="Favorite">
+            <span class="calculator-name">${calc.label}</span>
+            <label class="disable-label">
+                <input type="checkbox" class="disable-checkbox" onchange="toggleCalculatorEnabled('${calc.id}', this.checked)" ${enabledCalculators.includes(calc.id) ? '' : 'checked'}>
+                <span>Disable</span>
+            </label>
+        `;
+        list.appendChild(item);
+    });
+}
+
+// Enable/Disable calculator
+function toggleCalculatorEnabled(calculatorId, isDisabled) {
+    let enabledCalculators = getEnabledCalculators();
+    if (isDisabled) {
+        enabledCalculators = enabledCalculators.filter(id => id !== calculatorId);
+    } else {
+        if (!enabledCalculators.includes(calculatorId)) {
+            enabledCalculators.push(calculatorId);
+        }
+    }
+    setEnabledCalculators(enabledCalculators);
+    renderCalculators();
+}
+
+// Update renderCalculators to use enabledCalculators from storage
+function renderCalculators() {
+    const container = document.getElementById('calculator-container');
+    container.innerHTML = "";
+
+    const enabledCalculators = getEnabledCalculators();
+    calculators.forEach(calc => {
+        if (enabledCalculators.includes(calc.id)) {
+            const tile = document.createElement('div');
+            tile.className = "tile";
+            tile.setAttribute("data-name", calc.id);
+
+            tile.innerHTML = `
+                <button onclick="showCalculator('${calc.id}', this)">${calc.label}</button>
+                <div class="calculator-content"></div>
+            `;
+            container.appendChild(tile);
         }
     });
 }
 
-function handleSettingsClick(sectionName) {
-    alert(`You clicked on ${sectionName}`);
-    // Add logic here to navigate or perform actions based on the section clicked
+// Re-render manage page when opened
+function toggleManage() {
+    const managePage = document.getElementById("manage-page");
+    const isVisible = managePage.style.right === "0px";
+
+    if (isVisible) {
+        managePage.style.right = "-150%";
+    } else {
+        renderManageCalculators();
+        managePage.style.right = "0px";
+    }
 }
 
+function searchTiles() {
+    const query = document.getElementById('search-bar').value.toLowerCase();
+    const tiles = document.querySelectorAll('#calculator-container .tile');
+    tiles.forEach(tile => {
+        const label = tile.querySelector('button').textContent.toLowerCase();
+        if (label.includes(query)) {
+            tile.style.display = '';
+        } else {
+            tile.style.display = 'none';
+        }
+    });
+}
+
+document.addEventListener('DOMContentLoaded', renderCalculators);

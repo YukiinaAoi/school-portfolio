@@ -5,15 +5,15 @@
   <link rel="stylesheet" href="default.css">
   <link rel="stylesheet" href="calculators.css">
   <link rel="stylesheet" href="settings.css">
+  <link rel="stylesheet" href="manage.css">
   <link rel="stylesheet" href="about.css">
 </head>
 <body>
   <div class="top-bar">
     <img src="media/sidebar-icon.png" class="sidebar-icon invert" alt="Sidebar Icon" onclick="toggleSidebar()"/>
-    <input type="text" class="search-bar" id="search-bar" placeholder="What are you looking for?" oninput="filterTiles()"/>
+    <input type="text" class="search-bar" id="search-bar" placeholder="What are you looking for?" oninput="searchTiles()"/>
     <img src="media/search.png" class="search-icon invert" alt="Search" />
   </div>
-  <!-- FIX SCRIPT BUGS -->
   <div class="sidebar" id="sidebar">
     <ul>
       <li><a href="#" onclick="toggleSidebar()"><img class="icon invert" src="media/calculators.png"> Calculators </a></li>
@@ -22,47 +22,9 @@
     </ul>
   </div>
   <div class="background-overlay" id="background-overlay" onclick="toggleSidebar()"></div>
+<!-- Calculator Tiles -->
   <div id="calculator-container">
-    <div class="tile" data-name="number-conversions">
-      <button onclick="showCalculator('number-conversions', this)">Number Conversions</button>
-      <div class="calculator-content"></div>
-    </div>
-    <div class="tile" data-name="unit-conversion-length">
-      <button onclick="showCalculator('unit-conversion-length', this)">Length Unit Conversion</button>
-      <div class="calculator-content"></div>
-    </div>
-    <div class="tile" data-name="loan-calculator">
-      <button onclick="showCalculator('loancalculator', this)">Loan Calculator</button>
-      <div class="calculator-content"></div>
-    </div>
-    <div class="tile" data-name="unit-conversion-weight">
-      <button onclick="showCalculator('unit-conversion-weight', this)">Weight Unit Conversion</button>
-      <div class="calculator-content"></div>
-    </div>
-    <div class="tile" data-name="unit-conversion-temperature">
-      <button onclick="showCalculator('unit-conversion-temperature', this)">Temperature Unit Conversion</button>
-      <div class="calculator-content"></div>
-    </div>
-    <div class="tile" data-name="currency-converter">
-      <button onclick="showCalculator('currency-converter', this)">Currency Converter</button>
-      <div class="calculator-content"></div>
-    </div>
-    <div class="tile" data-name="bmi-calculator">
-      <button onclick="showCalculator('bmi-calculator', this)">BMI Calculator</button>
-      <div class="calculator-content"></div>
-    </div>
-    <div class="tile" data-name="age-calculator">
-      <button onclick="showCalculator('age-calculator', this)">Age Calculator</button>
-      <div class="calculator-content"></div>
-    </div>
-    <div class="tile" data-name="percentage-calculator">
-      <button onclick="showCalculator('percentage-calculator', this)">Percentage Calculator</button>
-      <div class="calculator-content"></div>
-    </div>
-    <div class="tile" data-name="compound-interest-calculator">
-      <button onclick="showCalculator('compound-interest-calculator', this)">Compound Interest Calculator</button>
-      <div class="calculator-content"></div>
-    </div>
+    
   </div>
 <!-- Settings -->
   <div id="settings-page" class="settings-page">
@@ -79,7 +41,7 @@
       </div>
       <div class="tile-layout flex-div"><img src="media/tiles.png" class="icon2 invert"><h1>Tile Layout</h1><img src="media/arrow.png" class="arrow icon2 invert"></div>
       <div class="font-size flex-div"><img src="media/font.png" class="icon2 invert"><h1>Font Size</h1><p class="font-label">Small</p><img src="media/arrow.png" class="arrow icon2 invert"></div>
-      <div class="manage-calculators flex-div"><img src="media/calculators.png" class="icon2 invert"><h1>Manage Calculators</h1></div>
+      <div class="manage-calculators flex-div"  onclick="toggleManage()"><img src="media/calculators.png" class="icon2 invert"><h1>Manage Calculators</h1></div>
     </div>
     <p>Behavior</p>
     <div class="behavior">
@@ -101,6 +63,27 @@
     <div class="others">
       <div class="clear-cache flex-div"><img src="media/clearcache.png" class="icon2 invert"><h1>Clear Cache</h1></div>
       <div class="measurement-system flex-div"><img src="media/measurement.png" class="icon2 invert"><h1>Measurement System</h1><img src="media/arrow.png" class="arrow icon2 invert"></div>
+  </div>
+<!-- Manage Calculators -->
+  <div>
+    <div id="manage-page" class="manage-page">
+      <div class="manage-header">
+        <span><img src="media/arrow.png" class="flip invert" alt="Return" onclick="toggleManage()"/><h2>Manage Calculators</h2></span>
+      </div>
+      
+      <div class="calculator-list">
+        <p>Available Calculators</p>
+        <!-- Example calculator item with checkbox for disable -->
+        <div class="calculator-item">
+          <img src="media/favorite.png" class="favorite-icon invert" alt="Favorite">
+          <span class="calculator-name">Calculator</span>
+          <label class="disable-label">
+            <input type="checkbox" class="disable-checkbox" onchange="toggleCalculatorEnabled('Calculator', this.checked)">
+            <span>Disable</span>
+          </label>
+        </div>
+      </div>
+    </div>
   </div>
 <!-- About -->
   <div id="about-page" class="about-page">

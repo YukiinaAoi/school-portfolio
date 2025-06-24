@@ -43,7 +43,7 @@ button {
     text-align: center;
 }
 
-.select, #result, #input, #convert-button {
+.select, .text-input, .convert-button {
     font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
 
@@ -68,7 +68,7 @@ button {
     gap: 10px; 
 }
 
-#result, #input {
+.text-input {
     align-self: center;
     justify-self: center;
     border: 1px solid gray;
@@ -93,7 +93,7 @@ button {
     transition: background-color 0.2s ease-in-out;
 }
 
-#convert-button:hover {
+.convert-button:hover {
     background-color: #7fd47f;
 }
 
