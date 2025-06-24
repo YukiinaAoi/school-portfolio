@@ -13,25 +13,11 @@
 }
 
 .about-page h2 {
-    font-size: 1.5rem;
+    font-size: var(--base-font-size, 1.5rem);
     color: #444cf7;
 }
 
 .about-page p {
-    font-size: 1rem;
+    font-size: var(--base-font-size, 1rem);
     margin: 10px 0;
-}
-
-.about-page button {
-    padding: 10px 20px;
-    border: none;
-    border-radius: 5px;
-    background-color: #444cf7;
-    color: white;
-    font-size: 1rem;
-    cursor: pointer;
-}
-
-.about-page button:hover {
-    background-color: #3a3acb;
 }

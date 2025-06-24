@@ -25,6 +25,10 @@ body {
     -ms-user-select: none;
 }
 
+html, body {
+    font-size: var(--base-font-size, 0.8rem);
+}
+
 body::-webkit-scrollbar, .tile::-webkit-scrollbar {
     display: none;
     background: transparent
@@ -139,7 +143,7 @@ body, .tile {
     color: white;
     text-decoration: none;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.1rem;
+    font-size: var(--sidebar-font-size, 1.1rem);
     padding-bottom: 15px;
     padding-top: 15px;
     margin-bottom: 5px;
@@ -274,3 +278,79 @@ input:checked + .slider:before {
 .font-small { font-size: 14px; }
 .font-medium { font-size: 17px; }
 .font-large { font-size: 20px; }
+
+:root {
+    --background-gradient: linear-gradient(to bottom, #019fcf, #001b3e);
+    --tile-bg: #52ffff;
+    --tile-border: #52ffff;
+    --tile-shadow: #00b0e6;
+    --topbar-bg: #001b3e;
+    --sidebar-bg: #02193A;
+    --sidebar-link: #fff;
+    --overlay-bg: rgba(0, 0, 0, 0.5);
+    --text-color: #000;
+    --settings-bg: #001b3e;
+    --settings-text: #ffffff;
+    --popup-bg: #00224d;
+    --popup-text: #fff;
+    --popup-hover: #003366;
+    --manage-bg: #001b3e;
+    --manage-text: #ffffff;
+    --calc-item-bg: #003366;
+    --calc-item-hover: #004080;
+    --calc-box-bg: whitesmoke;
+    --calc-box-border: whitesmoke;
+    --button-color: #444cf7;
+    --button-bg: transparent;
+    --convert-btn-bg: #9afc9a;
+    --convert-btn-hover: #7fd47f;
+}
+
+body {
+    background: var(--background-gradient);
+    color: var(--text-color);
+}
+.tile {
+    background-color: var(--tile-bg);
+    border: 2px solid var(--tile-border);
+    box-shadow: 0 4px 6px var(--tile-shadow);
+}
+.top-bar {
+    background-color: var(--topbar-bg);
+}
+.sidebar {
+    background-color: var(--sidebar-bg);
+}
+.sidebar ul li a {
+    color: var(--sidebar-link);
+}
+.background-overlay {
+    background-color: var(--overlay-bg);
+}
+
+body.light-theme {
+    --background-gradient: linear-gradient(to bottom, #e0f7fa, #ffffff);
+    --tile-bg: #ffffff;
+    --tile-border: #b2ebf2;
+    --tile-shadow: #b2ebf2;
+    --topbar-bg: #e0f7fa;
+    --sidebar-bg: #f5f5f5;
+    --sidebar-link: #222;
+    --overlay-bg: rgba(200, 200, 200, 0.5);
+    --text-color: #222;
+    --settings-bg: #e0f7fa;
+    --settings-text: #222;
+    --popup-bg: #e0f7fa;
+    --popup-text: #222;
+    --popup-hover: #b2ebf2;
+    --manage-bg: #e0f7fa;
+    --manage-text: #222;
+    --calc-item-bg: #b2ebf2;
+    --calc-item-hover: #e0f7fa;
+    --calc-box-bg: #fff;
+    --calc-box-border: #b2ebf2;
+    --button-color: #0077b6;
+    --button-bg: #e0f7fa;
+    --convert-btn-bg: #b2ffb2;
+    --convert-btn-hover: #a0e6a0;
+}

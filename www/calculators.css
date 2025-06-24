@@ -11,9 +11,9 @@ button {
     border: none;
     background-color: transparent;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
-    font-size: 1.2rem;
+    font-size: var(--button-font-size, 1.2rem);
     font-weight: bold;
-    color: #444cf7;
+    color: var(--button-color, #444cf7);
     cursor: pointer;
 }
 
@@ -51,8 +51,8 @@ button {
     justify-self: center;
     width: 95%;
     height: auto;
-    background-color: whitesmoke;
-    border: 5px solid whitesmoke;
+    background-color: var(--calc-box-bg, whitesmoke);
+    border: 5px solid var(--calc-box-border, whitesmoke);
     border-radius: 25px;
     box-shadow: 0 0 5px black;
     margin: 0;
@@ -87,14 +87,14 @@ button {
     height: 40px;
     border: 1px solid gray;
     border-radius: 10px;
-    background-color: #9afc9a;
+    background-color: var(--convert-btn-bg, #9afc9a);
     cursor: pointer;
     font-weight: bold;
     transition: background-color 0.2s ease-in-out;
 }
 
 .convert-button:hover {
-    background-color: #7fd47f;
+    background-color: var(--convert-btn-hover, #7fd47f);
 }
 
 .result-msg {

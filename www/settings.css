@@ -5,7 +5,7 @@
     width: 90%;
     max-width: 400px;
     height: 100%;
-    background-color: #001b3e;
+    background-color: var(--settings-bg, #001b3e);
     box-shadow: -2px 0 5px rgba(0, 0, 0, 0.2);
     padding: 20px;
     transition: right 0.3s ease-in-out; /* Smooth slide-in effect */
@@ -13,22 +13,22 @@
 }
 
 .settings-page p, .settings-page h2, .settings-page h1 {
-    color: #ffffff;
+    color: var(--settings-text, #ffffff);
 }
 
 .settings-page h2 {
-    font-size: 1.7rem;
+    font-size: var(--settings-h2-size, 1.7rem);
     justify-self: left;
 }
 
 .settings-page p {
-    font-size: 1.1rem;
+    font-size: var(--settings-p-size, 1.1rem);
     justify-self: left;
     font-weight: 150;
 }
 
 .settings-page h1 {
-    font-size: 1.2rem;
+    font-size: var(--settings-h1-size, 1.2rem);
     justify-self: left;
     font-weight: 500;
     padding-left: 5%;
@@ -87,7 +87,7 @@
   left: 50%;
   top: 40%;
   transform: translate(-50%, -50%);
-  background: #00224d;
+  background: var(--popup-bg, #00224d);
   border-radius: 10px;
   box-shadow: 0 2px 12px rgba(0,0,0,0.2);
   z-index: 2000;
@@ -95,11 +95,24 @@
   min-width: 160px;
 }
 .popup-option {
-  color: #fff;
+  color: var(--popup-text, #fff);
   padding: 12px 24px;
   cursor: pointer;
   text-align: center;
 }
 .popup-option:hover {
-  background: #003366;
+  background: var(--popup-hover, #003366);
+}
+
+.manage-page {
+    background-color: var(--manage-bg, #001b3e);
+}
+.manage-page h2, .manage-page p {
+    color: var(--manage-text, #ffffff);
+}
+.calculator-item {
+    background: var(--calc-item-bg, #003366);
+}
+.calculator-item:hover {
+    background: var(--calc-item-hover, #004080);
 }
