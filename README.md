@@ -16,17 +16,20 @@ Android Studio (for building APK)
 
 **Installation**
 Clone the repository:
-  git clone https://github.com/your-username/every-calculator.git
+  ```sh
+  git clone https://github.com/pr0cht/every-calculator.git
   cd every-calculator
-  
+  ```
 Install dependencies:
-  npm install
+  `npm install`
   
 Sync and open in Android Studio:
+```sh
   npx cap sync android
   npx cap copy
   npx cap open android
-  
+```
+
 **Build APK in Android Studio:**
 - Use Build > Assemble 'app' Run Configuration to generate a debug APK.
 - Find your APK at android/app/build/outputs/apk/debug/app-debug.apk.
