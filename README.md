@@ -1,6 +1,3 @@
-# every-calculator
-Recreaion of every kind of calculator online using **JavaScript**
+![Pals Team Logo](assets/team-logo.png)
 
-**Progress:**
-- Number Conversions // April 22, 2025
-- Unit Conversions // June 11, 2025
+**Pals** is represented by three stylized figures standing side by side, symbolizing unity, collaboration, and support. The vibrant colors reflect our team's diversity and friendly approach to problem-solving.
